@@ -8,7 +8,7 @@ gem 'rails', '3.1.3'
 #EKE: COMMENT sqlite add pg
 #gem 'sqlite3'
 gem 'pg'
-gem 'therubyracer'
+gem 'execjs'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,9 +36,10 @@ group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
   gem 'pg'
-  gem 'therubyracer'
+  gem 'execjs'
 end
 
 group :production do
   gem 'pg'
+  gem 'execjs'
 end
