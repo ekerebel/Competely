@@ -5,7 +5,9 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#EKE: COMMENT sqlite add pg
+#gem 'sqlite3'
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -33,4 +35,9 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
+  gem 'pg'
+end
+
+group :production do
+  gem 'pg'
 end
