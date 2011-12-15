@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vendor_product_id: 1
+  competitor_product_id: 1
+
+two:
+  vendor_product_id: 1
+  competitor_product_id: 1

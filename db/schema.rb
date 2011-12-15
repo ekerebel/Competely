@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214212812) do
+ActiveRecord::Schema.define(:version => 20111215174121) do
+
+  create_table "competitor_products", :force => true do |t|
+    t.integer  "vendor_product_id"
+    t.integer  "competitor_product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "prices", :force => true do |t|
     t.integer  "product_id"
