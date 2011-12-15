@@ -1,7 +1,7 @@
 Competely::Application.routes.draw do
-  get "pages/home"
-
-  get "pages/contact"
+  	get "pages/home"
+	get "pages/about"
+  	get "pages/contact"
 
   resources :products do
   	resources :prices
