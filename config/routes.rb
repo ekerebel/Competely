@@ -1,7 +1,5 @@
 Competely::Application.routes.draw do
-  get "users/new"
-
-  	get "pages/home"
+ 	get "pages/home"
 	get "pages/about"
   	get "pages/contact"
 
@@ -12,7 +10,7 @@ Competely::Application.routes.draw do
   resources :products do
   	resources :prices
   end
-
+  resources :users
   get "home/index"
 
   # The priority is based upon order of creation:
