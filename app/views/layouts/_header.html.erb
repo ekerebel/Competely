@@ -5,7 +5,11 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
-      <li><span><%= link_to "Login", '#' %></span></li>
+      <% if signed_in? %>
+      <li><span><%= link_to (current_user.email+": Sign out"), signout_path, :method => :delete %></span></li>
+      <% else %>
+      <li><span><%= link_to "Login", signin_path %></span></li>
+      <% end %>
     </ul>
   </nav>
   <%= image_tag("logo_110.png", :alt => "Sample App", :class => "round") %>

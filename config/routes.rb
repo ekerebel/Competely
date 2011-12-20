@@ -1,16 +1,25 @@
 Competely::Application.routes.draw do
+  get "sessions/new"
+
  	get "pages/home"
 	get "pages/about"
   	get "pages/contact"
 
 	match '/contact', :to => 'pages#contact'
   	match '/about',   :to => 'pages#about'
-	match '/signup',  :to => 'users#new'
 	
   resources :products do
   	resources :prices
   end
+  
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  match '/signup',  :to => 'users#new'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+  
+  
   get "home/index"
 
   # The priority is based upon order of creation:
