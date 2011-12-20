@@ -1,5 +1,7 @@
 <h1>Listing products</h1>
 
+
+
 <table>
   <tr>
     <th>Name</th>
@@ -10,7 +12,7 @@
     <th></th>
   </tr>
 
-<% @products.each do |product| %>
+<% current_user.products.each do |product| %>
   <tr>
     <td><%= product.name %></td>
     <td><%= product.description %></td>
@@ -20,8 +22,12 @@
     <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
-</table>
+<%= will_paginate @products %>
 
+
+
+</table>
+<%= will_paginate @products %>
 <br />
 
 <%= link_to 'New Product', new_product_path %>

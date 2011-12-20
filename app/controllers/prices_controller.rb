@@ -1,4 +1,5 @@
 class PricesController < ApplicationController
+before_filter :authenticate
 def create
     @product = Product.find(params[:product_id])
     @price = @product.prices.create(params[:price])
@@ -11,4 +12,7 @@ def create
     @price.destroy
     redirect_to product_path(@product)
   end
+  def authenticate
+      deny_access unless signed_in?
+    end
 end

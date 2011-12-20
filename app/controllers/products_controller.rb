@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
+before_filter :authenticate
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-	@title="products"
+    @products = Product.all.paginate(:page => params[:page])
+    #@products = current_user.products.paginate(:page => params[:page])
+    @title="products"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -80,4 +82,7 @@ class ProductsController < ApplicationController
       format.json { head :ok }
     end
   end
+  def authenticate
+      deny_access unless signed_in?
+    end
 end
