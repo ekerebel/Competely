@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
-gem 'tanker'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,6 +10,7 @@ gem 'tanker'
 gem 'pg'
 gem 'execjs'
 gem 'therubyracer'
+gem 'acts_as_indexed'
 
 
 # Gems used only for assets and not required
@@ -41,10 +41,12 @@ group :test do
   gem 'pg'
   gem 'execjs'
   gem 'therubyracer'
+  gem 'acts_as_indexed'
 end
 
 group :production do
   gem 'pg'
   gem 'execjs'
   gem 'therubyracer'
+  gem 'acts_as_indexed'
 end
