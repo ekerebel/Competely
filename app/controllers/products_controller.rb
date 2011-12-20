@@ -3,8 +3,14 @@ before_filter :authenticate
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(:page => params[:page])
-    #@products = current_user.products.paginate(:page => params[:page])
+    #@products = Product.all.paginate(:page => params[:page])
+    #@products = Product.with_query('apple').paginate(:page => params[:page])
+    #@products = current_user.Product.paginate(:page => params[:page])
+    if (params[:search].length>0)
+    	@products = Product.with_query(params[:search]).paginate(:page => params[:page])
+    else
+    	@products = Product.all.paginate(:page => params[:page])
+    end
     @title="products"
     respond_to do |format|
       format.html # index.html.erb
@@ -85,4 +91,7 @@ before_filter :authenticate
   def authenticate
       deny_access unless signed_in?
     end
+    
+	
+    
 end

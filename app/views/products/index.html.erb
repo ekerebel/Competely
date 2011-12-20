@@ -1,3 +1,11 @@
+<form action="/products" method="get">
+  <p align="center">
+    <%= text_field_tag :search, params[:search], :class => 'searchBox' %>
+    <%= submit_tag "Search", :name => nil , :class => 'searchButton'%>
+  </p>
+</form>
+
+
 <h1>Listing products</h1>
 
 
@@ -12,7 +20,7 @@
     <th></th>
   </tr>
 
-<% current_user.products.each do |product| %>
+<% @products.each do |product| %>
   <tr>
     <td><%= product.name %></td>
     <td><%= product.description %></td>

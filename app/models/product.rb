@@ -5,4 +5,5 @@ class Product < ActiveRecord::Base
 	def fulldescription
     	self.manufacturer + ' ' + self.name + ' ' + self.description
  	 end
+ 	 
 end
