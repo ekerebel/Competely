@@ -3,11 +3,12 @@ before_filter :authenticate
   # GET /products
   # GET /products.json
   def index
-    #@products = Product.all.paginate(:page => params[:page])
-    #@products = Product.with_query('apple').paginate(:page => params[:page])
-    #@products = current_user.Product.paginate(:page => params[:page])
-    if (params[:search].length>0)
-    	@products = Product.with_query(params[:search]).paginate(:page => params[:page])
+    if params[:search]
+    	if (params[:search].length>0)
+    		@products = Product.with_query(params[:search]).paginate(:page => params[:page])
+    	else
+    		@products = Product.all.paginate(:page => params[:page])
+    	end
     else
     	@products = Product.all.paginate(:page => params[:page])
     end
