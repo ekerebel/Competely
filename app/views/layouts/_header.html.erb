@@ -2,8 +2,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
   <nav class="header">
   <table id="menubar"><tr>
-  	<td width="100px"></td>
-  	<td width="300px"><%= image_tag("logo_70.png", :alt => "Sample App", :class => "header") %></td>
+  	<td width="100px" class="bottomtd"></td>
+  	<td width="300px" class="bottomtd"><%= image_tag("logo_70.png", :alt => "Sample App", :class => "header") %></td>
   	<td>
   	<div id="mainmenu">
   	<ul>
@@ -17,16 +17,18 @@
       <% end %>
     </ul>
     </div>
-    <% if signed_in? %>
+    
     	<div id="centeredmenu">
    		<ul>
-      	<li><%= link_to "Products", products_path %></li>
-      	<li><a href="#">Simulations</a></li>
+   	<% if signed_in? %>
+      	<li><%= link_to "Products", products_path, :class => menu_builder("products",@title) %></li>
+      	<li><%= link_to "Simulations", products_path, :class => 'inactive' %></li>
+    <% end %>
    		</ul>
 		</div>
-	<% end %>
+	
   	</td>
-  	<td width="100px"></td>
+  	<td width="100px" class="bottomtd"></td>
   	</tr>
     </table>
   </nav>

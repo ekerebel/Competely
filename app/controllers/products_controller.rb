@@ -51,6 +51,7 @@ before_filter :authenticate
   # POST /products.json
   def create
     @product = Product.new(params[:product])
+    @product.user_id=current_user.id
 	@title="products"
     respond_to do |format|
       if @product.save
