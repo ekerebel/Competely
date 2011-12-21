@@ -7,7 +7,7 @@ before_filter :authenticate
     	if (params[:search].length>0)
     		@products = Product.with_query(params[:search]).paginate(:page => params[:page])
     	else
-    		@products = Product.all.paginate(:page => params[:page])
+    		@products = current_user.products.all.paginate(:page => params[:page])
     	end
     else
     	@products = Product.all.paginate(:page => params[:page])

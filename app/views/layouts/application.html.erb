@@ -34,7 +34,9 @@ for(var i=0;i<a.length;i++)
         <% flash.each do |key, value| %>
           <div class="flash <%= key %>"><%= value %></div>
         <% end %>
-        <%= yield %>
+        
+	  <%= yield %>
+
       </section>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>

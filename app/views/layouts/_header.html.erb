@@ -1,7 +1,12 @@
 <header>
 	<meta name="apple-mobile-web-app-capable" content="yes">
-  <nav class="round">
-    <ul>
+  <nav class="header">
+  <table id="menubar"><tr>
+  	<td width="100px"></td>
+  	<td width="300px"><%= image_tag("logo_70.png", :alt => "Sample App", :class => "header") %></td>
+  	<td>
+  	<div id="mainmenu">
+  	<ul>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
@@ -11,18 +16,18 @@
       <li><span><%= link_to "Login", signin_path %></span></li>
       <% end %>
     </ul>
-  </nav>
-  <table>
-  <tr>
-  <td>
-  <%= image_tag("logo_110.png", :alt => "Sample App", :class => "round") %>
-  </td>
-  <td>
- 	<% if signed_in? %>
-      	SEARCH
+    </div>
+    <% if signed_in? %>
+    	<div id="centeredmenu">
+   		<ul>
+      	<li><%= link_to "Products", products_path %></li>
+      	<li><a href="#">Simulations</a></li>
+   		</ul>
+		</div>
 	<% end %>
-  </td>
-  </tr>
-  </table>
-  
+  	</td>
+  	<td width="100px"></td>
+  	</tr>
+    </table>
+  </nav>
 </header>

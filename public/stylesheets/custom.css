@@ -1,18 +1,31 @@
 .container {
-  width: 1000px;
+  width: 100%;
 }
 
 body {
-  background: #fff;
+  background: #ffffff;
+  width:100%
+  font-family:Verdana, arial, helvetica, sans-serif;
 }
 
+
+
+
 header {
-  padding-top: 10px;
+  height:70px;
+  padding:0px;
+  margin:0px;
+}
+#menubar {
+	height:70px;
+	margin-bottom:0px;
 }
 
 header img {
-  padding: 1em;
-  background: #fff;
+  padding: 0px;
+}
+header td {
+	padding: 0px;
 }
 
 section {
@@ -47,46 +60,123 @@ a:visited {
 nav {
   float: left;
   width:100%;
+  padding:0px;
+  margin:0px;
   
 }
 
 nav {
-  background-color: black;
-  padding: 0 0.7em;
+  background-color: #ffffff;
   white-space: nowrap;
+  border-bottom: 1px solid #EEE;
 }
 
-nav ul {
+
+/* MAIN MENU*/
+#mainmenu {
+  height:30px;
+}
+
+#mainmenu ul {
   margin: 0;
   padding: 0;
 }
 
-nav ul li {
+#mainmenu ul li {
   list-style-type: none;
   display: inline;
   padding: 0.2em 0;
 }
 
-nav ul li a {
+#mainmenu ul li a {
   padding: 0 5px;
-  font-weight: bold;
-  color: white;
+  font-family:Verdana, arial, helvetica, sans-serif;
+  font-size:1em;
+  color: #444444;
 }
-nav ul li span {
+#mainmenu ul li span {
   float:right;
 }
 
-nav ul li a:visited {
-  color: white;
+#mainmenu ul li a:visited {
+  color: #444444;
 }
 
-nav ul li a:hover {
-  color: white;
+#mainmenu ul li a:hover {
+  color: #444444;
 }
 
-nav ul li a:hover {
+#mainmenu ul li a:hover {
   text-decoration: underline;
 }
+/*CENTERED MENU */
+#centeredmenu {
+   height:30px;
+   float:left;
+   width:100%;
+   background:#fff;
+   /* border-bottom:4px solid #000; */
+   overflow:hidden;
+   position:relative;
+   margin-top:15px
+}
+#centeredmenu ul {
+   clear:left;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   text-align:center;
+}
+#centeredmenu ul li {
+   display:block;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+}
+#centeredmenu ul li a {
+   font-size:1.3em;
+   display:block;
+   margin:0 0 0 1px;
+   padding:3px 10px;
+   background:#fff;
+   color:#444;
+   text-decoration:none;
+   height:30px;
+      border-top: 1px solid #EEE;
+   border-left: 1px solid #EEE;
+   border-right: 1px solid #EEE;
+  -moz-border-radius:    8px;
+  -webkit-border-radius: 8px;
+  border-radius:         8px;
+}
+#centeredmenu ul li a:hover {
+   background:#EEE;
+   color:#444;
+      border-top: 1px solid #EEE;
+   border-left: 1px solid #EEE;
+   border-right: 1px solid #EEE;
+  -moz-border-radius:    8px;
+  -webkit-border-radius: 8px;
+  border-radius:         8px;
+}
+#centeredmenu ul li a.active,
+#centeredmenu ul li a.active:hover {
+   color:#444;
+   background:#EEE;
+   font-weight:bold;
+   border-top: 1px solid #EEE;
+   border-left: 1px solid #EEE;
+   border-right: 1px solid #EEE;
+  -moz-border-radius:    8px;
+  -webkit-border-radius: 8px;
+  border-radius:         8px;
+}
+
+
 
 /* Sign up button */
 
@@ -183,7 +273,7 @@ footer nav {
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	color:#ffffff;
-	font-family:arial;
+	font-family:Verdana, arial, helvetica, sans-serif;
 	font-size:15px;
 	font-weight:bold;
 	padding:6px 24px;
@@ -199,3 +289,5 @@ footer nav {
 .searchButton:active {
 	position:relative;
 	top:1px;
+	
+	
