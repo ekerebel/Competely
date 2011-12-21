@@ -17,7 +17,7 @@ def create
     if @user.save
       sign_in @user
       # Handle a successful save.
-      redirect_to @user
+      redirect_to products_path
     else
       @title = "Sign up"
       render 'new'

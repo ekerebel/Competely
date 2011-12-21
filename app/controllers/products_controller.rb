@@ -10,7 +10,7 @@ before_filter :authenticate
     		@products = current_user.products.all.paginate(:page => params[:page])
     	end
     else
-    	@products = Product.all.paginate(:page => params[:page])
+    	@products = current_user.products.all.paginate(:page => params[:page])
     end
     @title="products"
     respond_to do |format|
