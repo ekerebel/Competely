@@ -112,64 +112,53 @@ nav {
   text-decoration: underline;
 }
 /*CENTERED MENU */
-#centeredmenu {
-   height:30px;
-   float:left;
-   width:100%;
-   background:#fff;
-   border-bottom:1px solid #EEE;
-   overflow:hidden;
-   position:relative;
-   margin-top:15px
+.centeredmenu {
+    border-bottom: 1px solid #EEE;
 }
-#centeredmenu ul {
-   clear:left;
-   float:left;
-   list-style:none;
-   margin:0;
-   padding:0;
-   position:relative;
-   text-align:center;
+.centeredmenu  ul {
+    overflow: hidden;
+    margin: 1em 0 -1px;
+    padding: 0;
 }
-#centeredmenu ul li {
+.centeredmenu ul li {
    display: inline-block;
    float:left;
    list-style:none;
    margin:0;
    position:relative;
-   border-bottom:1px solid #F00;
 }
-#centeredmenu ul li a {
-   font-size:1.3em;
+.centeredmenu ul li a{
+    font-size:1.3em;
    display:block;
-   margin:5px 0px 5px 2px;
+   margin:5px 0px 0px 2px;
    padding:0px 10px;
-   background:#fff;
+   background:#EEE;
    color:#444;
    text-decoration:none;
    height:25px;
-   border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
    border-top: 2px solid #EEE;
    border-left: 1px solid #EEE;
    border-right: 1px solid #EEE;
   border-top-left-radius:    8px;
   border-top-right-radius: 8px;
+    font-size: 15px;
 }
-#centeredmenu ul li a:hover {
+.centeredmenu ul li a:hover {
    background:#FFF;
    color:#444;
-   border-top: 2px solid #fd2700;
+   border-top: 2px solid #EEE;
    border-left: 1px solid #EEE;
    border-right: 1px solid #EEE;
-   border-bottom: 1px solid #FFF;
+   border-bottom: 1px solid #EEE;
   border-top-left-radius:    8px;
   border-top-right-radius: 8px;
 }
-#centeredmenu ul li a.active,
-#centeredmenu ul li a.active:hover {
+.centeredmenu ul li a.active,
+.centeredmenu ul li a.active:hover {
    color:#444;
    background:#FFF;
-   border-top: 2px solid #fd2700;
+   border-top: 2px solid #EEE;
    border-left: 1px solid #EEE;
    border-right: 1px solid #EEE;
    border-bottom: 1px solid #FFF;
