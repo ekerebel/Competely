@@ -53,15 +53,28 @@ before_filter :authenticate
     @product = Product.new(params[:product])
     @product.user_id=current_user.id
 	@title="products"
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
+	@validatedDuplicates=0
+	if !@products.nil?
+		@validatedDuplicates=1
+	else
+		@products=Product.with_query(@product.manufacturer+' '+@product.name+' '+@product.description).paginate(:page => params[:page])
+	end
+
+	respond_to do |format|
+		if ((@products.length>0)&&(@validatedDuplicates==0))
+			format.html { render action: "new" }
+        	format.json { render json: @product.errors, status: :Duplicates }
+		else
+			if @product.save
+        		format.html { redirect_to @product, notice: 'Product was successfully created.'}
+        		format.json { render json: @product, status: :created, location: @product }
+      		else
+        		format.html { render action: "new" }
+        		format.json { render json: @product.errors, status: :unprocessable_entity }
+     		end
+		end
+	end
+    
   end
 
   # PUT /products/1

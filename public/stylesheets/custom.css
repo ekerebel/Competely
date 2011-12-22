@@ -118,7 +118,8 @@ nav {
 .centeredmenu  ul {
     overflow: hidden;
     margin: 1em 0 -1px;
-    padding: 0;
+    padding: 5px;
+    height:25px;
 }
 .centeredmenu ul li {
    display: inline-block;
@@ -247,6 +248,7 @@ footer nav {
 	line-height: 1.2em!important;
 	height: 1.7em!important;
 	font: 17px arial,sans-serif;
+	width:500px;
 }
 
 .searchButton{
@@ -279,5 +281,17 @@ footer nav {
 .searchButton:active {
 	position:relative;
 	top:1px;
+	
+	#overlay {
+		background-image:url(http://static.flowplayer.org/img/overlay/transparent.png);
+		color:#efefef;
+		height:450px;
+	}
+	
+	/* container for external content. uses vertical scrollbar, if needed */
+	div.contentWrap {
+		height:441px;
+		overflow-y:auto;
+	}
 	
 	

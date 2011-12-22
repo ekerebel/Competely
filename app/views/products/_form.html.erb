@@ -1,3 +1,11 @@
+<% if !@products.nil? %>
+	<% if @products.length>0 %>
+		<%= @validatedDuplicates.to_s%>! We have a list of duplicates in the database. Please check before validating the creation.
+		<%= render 'list' %>
+
+	<% end %>
+<% end %>
+
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
