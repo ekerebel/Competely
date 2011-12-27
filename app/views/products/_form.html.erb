@@ -1,12 +1,6 @@
 
     
-<% if !@products.nil? %>
-	<% if @products.length>0 %>
-		<%= @validatedDuplicates.to_s%>! We have a list of duplicates in the database. Please check before validating the creation.
-		<%= render 'list' %>
 
-	<% end %>
-<% end %>
 
 <%= form_for @product, :remote => true do |f| %>
   <% if @product.errors.any? %>
@@ -20,6 +14,9 @@
       </ul>
     </div>
   <% end %>
+  
+  
+  
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -32,11 +29,13 @@
     <%= f.label :manufacturer %><br />
     <%= f.text_field :manufacturer %>
   </div>
-  <% if !@products.nil? %>
-	<% if @products.length>0 %>
-		<%= text_field_tag :validated_duplicates, params[:validated_duplicates] %>
-	<% end %>
-<% end %>
+  
+<div class="duplicates"></div>
+
+<div class="validatedDuplicates" style="display:none;">
+  	<%= check_box_tag :validated_duplicates, params[:validated_duplicates] %> Check if you still want to create this product.
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

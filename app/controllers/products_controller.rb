@@ -54,18 +54,16 @@ before_filter :authenticate
     @product = Product.new(params[:product])
     @product.user_id=current_user.id
 	@title="products"
-	@validatedDuplicates=0
-	if params[:validated_duplicates]
-		@validatedDuplicates=1
-	else
+	@validatedDuplicates=params[:validated_duplicates]
+	if @validatedDuplicates!="on"
 		@products=Product.with_query(@product.manufacturer+' '+@product.name+' '+@product.description).paginate(:page => params[:page])
 		if @products.length==0
-			@validatedDuplicates=1
+			@validatedDuplicates="on"
 		end
 	end
 
 	respond_to do |format|
-		if @validatedDuplicates==0
+		if @validatedDuplicates!="on"
 			format.js {render :content_type => 'text/javascript'}
 			format.html { render action: "new" }
         	format.json { render json: @product.errors, status: :Duplicates }

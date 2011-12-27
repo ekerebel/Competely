@@ -1,3 +1,13 @@
 //alert('TEST NEW ??TEST <%=@validatedDuplicates%>');
-$("#new_product").before('<div id="flash_notice">SSS</div>');
+//$("#new_product").before('<div id="flash_notice">SSS</div>');
+//$('#new_product').html("<%= escape_javascript(render :partial => 'list', :collection => @products) %>");
 
+<% if (@validatedDuplicates!='on') %>
+	$('div.duplicates').replaceWith("Potential duplicates were found in the database. Please double-check before submitting<br><%= escape_javascript(render :partial => 'list', :collection => @products) %>");
+	validated_duplicates.checked=false;
+	$('.validatedDuplicates').show(); 
+	//$('.field > input').attr("disabled", true); 
+	//$('div.validatedDuplicates').replaceWith("Check this if you still want to create this product");
+<% else %>
+	parent.location.reload(true);
+<% end %>
