@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  segment_id: 1
+  segment_title: MyString
+  family_id: 1
+  family_title: MyString
+  class_id: 1
+  class_title: MyString
+
+two:
+  title: MyString
+  segment_id: 1
+  segment_title: MyString
+  family_id: 1
+  family_title: MyString
+  class_id: 1
+  class_title: MyString

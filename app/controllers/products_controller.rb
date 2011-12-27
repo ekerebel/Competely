@@ -73,6 +73,7 @@ before_filter :authenticate
         		format.html { redirect_to @product, notice: 'Product was successfully created.'}
         		format.json { render json: @product, status: :created, location: @product }
       		else
+        		format.js {render :content_type => 'text/javascript'}
         		format.html { render action: "new" }
         		format.json { render json: @product.errors, status: :unprocessable_entity }
      		end

@@ -12,4 +12,8 @@ jQuery.fn.submitWithAjax = function() {
 
 $(document).ready(function() {
   $("#new_review").submitWithAjax();
+  $("#fancybox-close").click(function() {
+	// do stuff
+	parent.location.reload(true);
+  });
 })
