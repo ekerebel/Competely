@@ -12,6 +12,8 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'acts_as_indexed'
 gem 'will_paginate', '3.0.pre2'
+gem "fancybox-rails"
+#gem "facebox-rails", "~> 0.1.1"
 
 
 # Gems used only for assets and not required
@@ -44,6 +46,8 @@ group :test do
   gem 'therubyracer'
   gem 'acts_as_indexed'
   gem 'will_paginate', '3.0.pre2'
+  gem "fancybox-rails"
+  #gem "facebox-rails", "~> 0.1.1"
 end
 
 group :production do
@@ -52,4 +56,6 @@ group :production do
   gem 'therubyracer'
   gem 'acts_as_indexed'
   gem 'will_paginate', '3.0.pre2'
+  gem "fancybox-rails"
+  #gem "facebox-rails", "~> 0.1.1"
 end

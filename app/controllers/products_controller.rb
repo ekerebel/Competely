@@ -36,7 +36,8 @@ before_filter :authenticate
     @product = Product.new
 	@title="products"
     respond_to do |format|
-      format.html # new.html.erb
+      #format.html { render action: "new"}
+      format.html {render :layout => 'fancyform'}
       format.json { render json: @product }
     end
   end
@@ -54,18 +55,23 @@ before_filter :authenticate
     @product.user_id=current_user.id
 	@title="products"
 	@validatedDuplicates=0
-	if !@products.nil?
+	if params[:validated_duplicates]
 		@validatedDuplicates=1
 	else
 		@products=Product.with_query(@product.manufacturer+' '+@product.name+' '+@product.description).paginate(:page => params[:page])
+		if @products.length==0
+			@validatedDuplicates=1
+		end
 	end
 
 	respond_to do |format|
-		if ((@products.length>0)&&(@validatedDuplicates==0))
+		if @validatedDuplicates==0
+			format.js {render :content_type => 'text/javascript'}
 			format.html { render action: "new" }
         	format.json { render json: @product.errors, status: :Duplicates }
 		else
 			if @product.save
+				format.js {render :content_type => 'text/javascript'}
         		format.html { redirect_to @product, notice: 'Product was successfully created.'}
         		format.json { render json: @product, status: :created, location: @product }
       		else

@@ -9,6 +9,7 @@
   <link rel="apple-touch-startup-image" href="assets/logo_wait.png">
   <link rel="apple-touch-startup-image" href="assets/logo_wait_ipad.png">
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
   <script>
   var a=document.getElementsByTagName("a");
 for(var i=0;i<a.length;i++)
@@ -26,6 +27,7 @@ for(var i=0;i<a.length;i++)
 	
 
 
+
 </head>
 <body>
     <div class="container">
@@ -35,13 +37,16 @@ for(var i=0;i<a.length;i++)
         <% flash.each do |key, value| %>
           <div class="flash <%= key %>"><%= value %></div>
         <% end %>
-
-	  <%= yield %>
+    <%= yield %>
 
       </section>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
     </div>
-   
+<script>
+$(document).ready(function() {
+  $("a.fancybox").fancybox();
+});
+</script>
   </body>
 </html>
