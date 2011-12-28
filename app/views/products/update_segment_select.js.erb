@@ -1,0 +1,5 @@
+<% options=raw("<option value='0'></option>") %>
+<% @families.each do |f| %>
+	<% options=options+raw("<option value='"+f.family_id.to_s+"'>"+f.family_title+"</option>") %>
+<% end %>
+$("#family").html("<%=options%>")

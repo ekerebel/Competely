@@ -35,6 +35,7 @@ before_filter :authenticate
   def new
     @product = Product.new
 	@title="products"
+	@segments = Commodity.find_by_sql("select DISTINCT segment_id, segment_title from commodities  ORDER BY SEGMENT_TITLE")
     respond_to do |format|
       #format.html { render action: "new"}
       format.html {render :layout => 'fancyform'}
@@ -97,6 +98,26 @@ before_filter :authenticate
       end
     end
   end
+
+	def update_segment_select
+	@families=Commodity.find_by_sql("select DISTINCT family_id, family_title from commodities WHERE SEGMENT_ID='"+params[:id]+"' ORDER BY family_TITLE")
+		respond_to do |format|
+			format.js {render :content_type => 'text/javascript'}
+		end
+	end
+	def update_family_select
+	@classes=Commodity.find_by_sql("select DISTINCT class_id, class_title from commodities WHERE FAMILY_ID='"+params[:id]+"' ORDER BY CLASS_TITLE")
+		respond_to do |format|
+			format.js {render :content_type => 'text/javascript'}
+		end
+	end
+	def update_class_select
+	@commodities=Commodity.find_by_sql("select DISTINCT id, title from commodities WHERE CLASS_ID='"+params[:id]+"' ORDER BY TITLE")
+		respond_to do |format|
+			format.js {render :content_type => 'text/javascript'}
+		end
+	end
+	
 
   # DELETE /products/1
   # DELETE /products/1.json
