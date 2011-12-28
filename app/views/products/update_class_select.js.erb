@@ -1,5 +1,7 @@
-<% options=raw("<option value='0'></option>") %>
+<% options=raw("<option value='"+params[:id]+"'></option>") %>
 <% @categories.each do |c| %>
-	<% options=options+raw("<option value='"+c.id.to_s+"'>"+c.title+"</option>") %>
+	<% options=options+raw("<option value='"+c.id.to_s+"'>"+c.id.to_s+": "+c.title+"</option>") %>
 <% end %>
 $("#commodity").html("<%=options%>")
+$("#commodity_commodity").show()
+$('#product_category_id').val(<%=params[:id]%>)

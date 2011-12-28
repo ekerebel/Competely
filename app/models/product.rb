@@ -6,6 +6,5 @@ class Product < ActiveRecord::Base
 	def fulldescription
     	self.manufacturer + ' ' + self.name + ' ' + self.description
  	 end
- 	validates :commodity_id, :presence => true
-	
+ 	validates :category_id, :presence => true
 end

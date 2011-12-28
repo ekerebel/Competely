@@ -47,6 +47,12 @@ before_filter :authenticate
   def edit
     @product = Product.find(params[:id])
     @title="products"
+    @categories = Category.find_by_sql("select id, title from categories where type='segment' order by title")
+     respond_to do |format|
+      #format.html { render action: "new"}
+      format.html {render :layout => 'fancyform'}
+      format.json { render json: @product }
+    end
   end
 
   # POST /products

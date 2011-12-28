@@ -7,13 +7,13 @@
   	<td>
   	<div id="mainmenu">
   	<ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
+      <li><%= link_to "Home", "javascript:this.location = '"+root_path+"'" %></li>
+      <li><%= link_to "About", "javascript:this.location = '"+about_path+"'" %></li>
+      <li><%= link_to "Contact", "javascript:this.location = '"+contact_path+"'" %></li>
       <% if signed_in? %>
-      <li><span><%= link_to current_user.email, edit_user_path(current_user) %><%= link_to "Logout", signout_path, :method => :delete %></span></li>
+      <li><span><%= link_to current_user.email, edit_user_path(current_user) %><%= link_to "Logout", "javascript:this.location = '"+signout_path+"'", :method => :delete %></span></li>
       <% else %>
-      <li><span><%= link_to "Login", signin_path %></span></li>
+      <li><span><%= link_to "Login", "javascript:this.location = '"+signin_path+"'" %></span></li>
       <% end %>
     </ul>
     </div>
@@ -21,8 +21,8 @@
     	<div class="centeredmenu">
    		<ul>
    	<% if signed_in? %>
-      	<li><%= link_to "Products", products_path, :class => menu_builder("products",@title) %></li>
-      	<li><%= link_to "Simulations", products_path, :class => 'inactive' %></li>
+      	<li><%= link_to "Products", "javascript:this.location = '"+products_path+"'", :class => menu_builder("products",@title) %></li>
+      	<li><%= link_to "Simulations", "javascript:this.location = '"+products_path+"'", :class => 'inactive' %></li>
     <% end %>
    		</ul>
 		</div>

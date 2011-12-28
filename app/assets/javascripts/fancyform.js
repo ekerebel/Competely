@@ -32,6 +32,11 @@ jQuery(function($) {
     if(myClass == "") family="0";
     jQuery.get('/products/update_class_select/' + myClass)
   });
+  $("#commodity").change(function() {
+    // make a POST call and replace the content
+    var commodity = $('select#commodity :selected').val();
+    $('#product_category_id').val(commodity);
+  });
   
 })
 
