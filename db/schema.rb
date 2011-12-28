@@ -11,23 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227220249) do
+ActiveRecord::Schema.define(:version => 20111228161817) do
 
-  create_table "commodities", :force => true do |t|
+  create_table "categories", :force => true do |t|
     t.string   "title"
-    t.integer  "segment_id"
-    t.string   "segment_title"
-    t.integer  "family_id"
-    t.string   "family_title"
-    t.integer  "class_id"
-    t.string   "class_title"
+    t.string   "type"
+    t.integer  "parent"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "commodities", ["class_id"], :name => "index_commodities_on_class_id"
-  add_index "commodities", ["family_id"], :name => "index_commodities_on_family_id"
-  add_index "commodities", ["segment_id"], :name => "index_commodities_on_segment_id"
+  add_index "categories", ["parent"], :name => "index_categories_on_parent"
 
   create_table "competitor_products", :force => true do |t|
     t.integer  "vendor_product_id"
@@ -53,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20111227220249) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "commodity_id"
+    t.integer  "category_id"
   end
 
   add_index "products", ["user_id"], :name => "index_products_on_user_id"

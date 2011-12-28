@@ -1,5 +1,5 @@
 <% options=raw("<option value='0'></option>") %>
-<% @commodities.each do |c| %>
+<% @categories.each do |c| %>
 	<% options=options+raw("<option value='"+c.id.to_s+"'>"+c.title+"</option>") %>
 <% end %>
 $("#commodity").html("<%=options%>")

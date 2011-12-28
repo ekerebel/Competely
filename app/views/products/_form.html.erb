@@ -13,7 +13,7 @@
   <% end %>
   <%= f.label "Category *" %><br />
  <div class="field" id="commodity_segment">
-    <%= select_tag 'segment', options_for_select(@segments.collect{ |s| [s.segment_title, s.segment_id] }.insert(0, '')) %>
+    <%= select_tag 'segment', options_for_select(@categories.collect{ |c| [c.title, c.id] }.insert(0, '')) %>
   </div>
   <div class="field" id="commodity_family">
     <%= select_tag 'family', options_for_select([""].insert(0, '')) %>
@@ -26,8 +26,8 @@
   </div>
  
   <div class="field">
-    <%= f.label :commodity %><br />
-    <%= f.text_field :commodity %>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
   </div>
   
   <div class="field">
