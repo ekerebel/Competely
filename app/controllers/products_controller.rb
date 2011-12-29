@@ -3,14 +3,19 @@ before_filter :authenticate
   # GET /products
   # GET /products.json
   def index
+    @categories = Category.find_by_sql("select id, title from categories where category_type='segment' order by title")
+    exp1=""
+    if params[:search_category_id] && params[:search_category_id]!="0"
+    	exp1="category_id="+params[:search_category_id]
+    end
     if params[:search]
     	if (params[:search].length>0)
-    		@products = Product.with_query(params[:search]).paginate(:page => params[:page])
+    		@products = Product.with_query(params[:search]).find(:all, :conditions => [exp1]).paginate(:page => params[:page])
     	else
-    		@products = current_user.products.all.paginate(:page => params[:page])
+    		@products = current_user.products.find(:all, :conditions => [exp1]).paginate(:page => params[:page])
     	end
     else
-    	@products = current_user.products.all.paginate(:page => params[:page])
+    	@products = current_user.products.find(:all, :conditions => [exp1]).paginate(:page => params[:page])
     end
     @title="products"
     respond_to do |format|
@@ -35,7 +40,7 @@ before_filter :authenticate
   def new
     @product = Product.new
 	@title="products"
-	@categories = Category.find_by_sql("select id, title from categories where type='segment' order by title")
+	@categories = Category.find_by_sql("select id, title from categories where category_type='segment' order by title")
     respond_to do |format|
       #format.html { render action: "new"}
       format.html {render :layout => 'fancyform'}
@@ -47,7 +52,7 @@ before_filter :authenticate
   def edit
     @product = Product.find(params[:id])
     @title="products"
-    @categories = Category.find_by_sql("select id, title from categories where type='segment' order by title")
+    @categories = Category.find_by_sql("select id, title from categories where category_type='segment' order by title")
      respond_to do |format|
       #format.html { render action: "new"}
       format.html {render :layout => 'fancyform'}
@@ -105,24 +110,13 @@ before_filter :authenticate
     end
   end
 
-	def update_segment_select
-	@categories = Category.find_by_sql("select id, title from categories where type='family' AND parent='"+params[:id]+"' order by title")
+	def update_category_select
+	@categories = Category.find_by_sql("select id, title from categories where category_type='"+params[:type]+"' AND parent='"+params[:id]+"' order by title")
     	respond_to do |format|
 			format.js {render :content_type => 'text/javascript'}
 		end
 	end
-	def update_family_select
-	@categories = Category.find_by_sql("select id, title from categories where type='class' AND parent='"+params[:id]+"' order by title")
-     	respond_to do |format|
-			format.js {render :content_type => 'text/javascript'}
-		end
-	end
-	def update_class_select
-	@categories = Category.find_by_sql("select id, title from categories where type='commodity' AND parent='"+params[:id]+"' order by title")
-    	respond_to do |format|
-			format.js {render :content_type => 'text/javascript'}
-		end
-	end
+	
 	
 
   # DELETE /products/1

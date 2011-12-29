@@ -12,11 +12,8 @@ Competely::Application.routes.draw do
   	resources :prices
   end
   resources :products
-  	match 'products/update_segment_select/:id', :controller=>'products', :action => 'update_segment_select'
-  	match 'products/update_family_select/:id', :controller=>'products', :action => 'update_family_select'
-  	match 'products/update_class_select/:id', :controller=>'products', :action => 'update_class_select'
+  	match 'products/update_category_select/:id', :controller=>'products', :action => 'update_category_select'
   	
-
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 

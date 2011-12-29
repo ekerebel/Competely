@@ -1,0 +1,14 @@
+<% options=raw("<option value='"+params[:id]+"'></option>") %>
+<% @categories.each do |c| %>
+
+	<%if !params[:defaultCategory].nil? && (params[:defaultCategory]==c.id.to_s)%>
+		<% options=options+raw("<option SELECTED value='"+c.id.to_s+"'>"+c.id.to_s+": "+c.title+"</option>") %>
+	<%else%>
+		<% options=options+raw("<option value='"+c.id.to_s+"'>"+c.id.to_s+": "+c.title+"</option>") %>
+	<%end%>
+<% end %>
+$("#<%=params[:divId]%> > #<%=params[:type]%>").html("<%=options%>")
+$("#<%=params[:divId]%> > #<%=params[:type]%>").change()
+
+
+

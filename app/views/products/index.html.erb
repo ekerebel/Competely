@@ -2,7 +2,19 @@
   <p align="center">
     <%= text_field_tag :search, params[:search], :class => 'searchBox' %>
     <%= submit_tag "Search", :name => nil , :class => 'searchButton'%>
+    <div id="extendUnspsc" align="center"><a id="aExtendUnspsc" href="#">+ </a><a id="aExtendUnspscDescr" href="#">Select Category</a></div>
   </p>
+  
+  <div id="unspsc_search" align="center" style="display:none">
+  	<%= text_field_tag "default_family", params[:family], :type => "hidden" %>
+    <%= text_field_tag "default_class", params[:class], :type => "hidden" %>
+    <%= text_field_tag "default_commodity", params[:commodity], :type => "hidden" %>
+    <%= select_tag :segment, options_for_select(@categories.collect{ |c| [c.id.to_s+': '+c.title, c.id] }.insert(0, ''),params[:segment]), :style => "width:800px" %>
+    <%= select_tag :family, options_for_select([""].insert(0, ''),params[:family]), :style => "width:800px" %>
+    <%= select_tag :class, options_for_select([""].insert(0, ''),params[:class]),:style => "width:800px" %>
+    <%= select_tag :commodity, options_for_select([""].insert(0, ''),params[:commodity]), :style => "width:800px" %>
+    <%= text_field_tag :search_category_id, params[:search_category_id], :type => "hidden" %>
+  </div>
 </form>
 
 
@@ -10,4 +22,5 @@
 
 <br />
 
-<%= link_to 'New Product', new_product_path, :class =>'fancybox' %>
+<%= link_to 'New Product', new_product_path(:segment => params[:segment]) , :class =>'fancybox' %>
+

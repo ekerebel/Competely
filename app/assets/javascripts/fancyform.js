@@ -11,30 +11,36 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 jQuery(function($) {
+	$("#unspsc_sform > #segment").ready(function() {
+  		$("#unspsc_form > #segment").change();
+  	});
   // when the #segment/family/class field changes
-  $("#segment").change(function() {
+  $("#unspsc_form > #segment").change(function() {
     // make a POST call and replace the content
-    var segment = $('select#segment :selected').val();
+    var segment = $('#unspsc_form > #segment :selected').val();
+    var defaultCategory=$('#default_family').val();
     if(segment == "") segment="0";
-    jQuery.get('/products/update_segment_select/' + segment)
+    jQuery.get('/products/update_category_select/' + segment,{type:"family", divId:"unspsc_form", defaultCategory:defaultCategory})
   });
   // when the #segment/family/class field changes
-  $("#family").change(function() {
+  $("#unspsc_form > #family").change(function() {
     // make a POST call and replace the content
-    var family = $('select#family :selected').val();
+    var family = $('#unspsc_form > #family :selected').val();
+    var defaultCategory=$('#default_class').val();
     if(family == "") family="0";
-    jQuery.get('/products/update_family_select/' + family)
+    jQuery.get('/products/update_category_select/' + family,{type:"class", divId:"unspsc_form", defaultCategory:defaultCategory})
   });
   // when the #segment/family/class field changes
-  $("#myClass").change(function() {
+  $("#unspsc_form > #class").change(function() {
     // make a POST call and replace the content
-    var myClass = $('select#myClass :selected').val();
+    var myClass = $('#unspsc_form > #class :selected').val();
+    var defaultCategory=$('#default_commodity').val();
     if(myClass == "") family="0";
-    jQuery.get('/products/update_class_select/' + myClass)
+    jQuery.get('/products/update_category_select/' + myClass,{type:"commodity", divId:"unspsc_form", defaultCategory:defaultCategory})
   });
-  $("#commodity").change(function() {
+  $("#unspsc_form > #commodity").change(function() {
     // make a POST call and replace the content
-    var commodity = $('select#commodity :selected').val();
+    var commodity = $('#unspsc_form > #commodity :selected').val();
     $('#product_category_id').val(commodity);
   });
   

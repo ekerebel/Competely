@@ -12,23 +12,20 @@
     </div>
   <% end %>
   <%= f.label "UNSPSC *" %><br />
- <div class="field" id="commodity_segment">
-    <%= select_tag 'segment', options_for_select(@categories.collect{ |c| [c.id.to_s+': '+c.title, c.id] }.insert(0, '')), :style => "width:600px" %>
-  </div>
-  <div class="field" id="commodity_family" style="display:none">
-    <%= select_tag 'family', options_for_select([""].insert(0, '')), :style => "width:600px" %>
-  </div>
-  <div class="field" id="commodity_class" style="display:none">
-    <%= select_tag 'myClass', options_for_select([""].insert(0, '')), :style => "width:600px" %>
-  </div>
-  <div class="field" id="commodity_commodity" style="display:none">
-    <%= select_tag 'commodity', options_for_select([""].insert(0, '')), :style => "width:600px" %>
-  </div>
- 
-  <div class="field">
+ <div class="field" id="unspsc_form">
+    <%= select_tag 'segment', options_for_select(@categories.collect{ |c| [c.id.to_s+': '+c.title, c.id] }.insert(0, ''),params[:segment]), :style => "width:600px" %>
+  	<%= select_tag 'family', options_for_select([""].insert(0, '')), :style => "width:600px" %>
+  	<%= select_tag 'class', options_for_select([""].insert(0, '')), :style => "width:600px" %>
+  	<%= select_tag 'commodity', options_for_select([""].insert(0, '')), :style => "width:600px" %>
+  	
+  	<div class="field">
     <%= f.label :category_id %><br />
     <%= f.text_field :category_id %>
   </div>
+  	
+  </div>
+ 
+  
   
   <div class="field">
     <%= f.label :name %><br />
