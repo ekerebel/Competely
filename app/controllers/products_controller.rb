@@ -6,7 +6,19 @@ before_filter :authenticate
     @categories = Category.find_by_sql("select id, title from categories where category_type='segment' order by title")
     exp1=""
     if params[:search_category_id] && params[:search_category_id]!="0"
-    	exp1="category_id="+params[:search_category_id]
+    	minCategory=params[:search_category_id].reverse!.to_i.to_s.reverse!.to_i
+    	maxCategory=minCategory+1
+    	multiplier=1
+    	if minCategory.to_s.length==2
+    		multiplier=1000000
+    	elsif minCategory.to_s.length==4
+    		multiplier=10000
+    	elsif minCategory.to_s.length==6
+    		multiplier=100
+    	end
+    	minCategory=minCategory*multiplier
+    	maxCategory=maxCategory*multiplier
+    	exp1="category_id>="+minCategory.to_s+" AND category_id<"+maxCategory.to_s
     end
     if params[:search]
     	if (params[:search].length>0)

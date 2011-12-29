@@ -11,7 +11,7 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 jQuery(function($) {
-	$("#unspsc_sform > #segment").ready(function() {
+  $("#unspsc_sform > #segment").ready(function() {
   		$("#unspsc_form > #segment").change();
   	});
   // when the #segment/family/class field changes

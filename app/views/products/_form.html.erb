@@ -1,3 +1,13 @@
+<%myCategory="000000"%>
+<%if @product.category_id%>
+	<%myCategory=@product.category_id.to_s%>
+<%elsif%>
+	<%myCategory=params[:search_category_id].to_s%>
+<%end%>
+<%default_segment=myCategory[0,2]+"000000"%>
+<%default_family=myCategory[0,4]+"0000"%>
+<%default_class=myCategory[0,6]+"00"%>
+<%default_commodity=myCategory%>
 
 <%= form_for @product, :remote => true do |f| %>
   <% if @product.errors.any? %>
@@ -13,7 +23,11 @@
   <% end %>
   <%= f.label "UNSPSC *" %><br />
  <div class="field" id="unspsc_form">
-    <%= select_tag 'segment', options_for_select(@categories.collect{ |c| [c.id.to_s+': '+c.title, c.id] }.insert(0, ''),params[:segment]), :style => "width:600px" %>
+ 	<%= text_field_tag "default_family", default_family, :type => "hidden" %>
+    <%= text_field_tag "default_class",default_class, :type => "hidden" %>
+    <%= text_field_tag "default_commodity", default_commodity, :type => "hidden" %>
+    
+    <%= select_tag 'segment', options_for_select(@categories.collect{ |c| [c.id.to_s+': '+c.title, c.id] }.insert(0, ''),default_segment), :style => "width:600px" %>
   	<%= select_tag 'family', options_for_select([""].insert(0, '')), :style => "width:600px" %>
   	<%= select_tag 'class', options_for_select([""].insert(0, '')), :style => "width:600px" %>
   	<%= select_tag 'commodity', options_for_select([""].insert(0, '')), :style => "width:600px" %>

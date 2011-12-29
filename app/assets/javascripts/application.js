@@ -16,7 +16,7 @@ jQuery(function($) {
   $("#unspsc_search > #segment").change(function() {
     // make a POST call and replace the content
     var segment = $('select#segment :selected').val();
-    var defaultCategory=$('#default_family').val();
+    var defaultCategory=$('#previous_family').val();
     if(segment == "") segment="0";
     jQuery.get('/products/update_category_select/' + segment,{type:"family", divId:"unspsc_search", defaultCategory:defaultCategory})
   });
@@ -24,7 +24,7 @@ jQuery(function($) {
   $("#unspsc_search > #family").change(function() {
     // make a POST call and replace the content
     var family = $('select#family :selected').val();
-    var defaultCategory=$('#default_class').val();
+    var defaultCategory=$('#previous_class').val();
     if(family == "") family="0";
     jQuery.get('/products/update_category_select/' + family,{type:"class", divId:"unspsc_search", defaultCategory:defaultCategory})
   });
@@ -32,7 +32,7 @@ jQuery(function($) {
   $("#unspsc_search > #class").change(function() {
     // make a POST call and replace the content
     var myClass = $('select#class :selected').val();
-     var defaultCategory=$('#default_commodity').val();
+     var defaultCategory=$('#previous_commodity').val();
     if(myClass == "") family="0";
     jQuery.get('/products/update_category_select/' + myClass,{type:"commodity", divId:"unspsc_search", defaultCategory:defaultCategory})
   });
@@ -45,7 +45,17 @@ jQuery(function($) {
 })
 
 $(document).ready(function() {
-  $("#extendUnspsc").click(function() {
+  $("#aExtendUnspsc").click(function() {
+    if (document.getElementById('unspsc_search').style.display=="none"){
+    	document.getElementById('unspsc_search').style.display="block";
+    	$('#aExtendUnspsc').html("- ");
+    }
+    else {
+    	document.getElementById('unspsc_search').style.display="none";
+    	$('#aExtendUnspsc').html("+ ");
+    }
+  });
+  $("#aExtendUnspscDescr").click(function() {
     if (document.getElementById('unspsc_search').style.display=="none"){
     	document.getElementById('unspsc_search').style.display="block";
     	$('#aExtendUnspsc').html("- ");
