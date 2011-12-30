@@ -11,7 +11,7 @@
       <li><%= link_to "About", "javascript:this.location = '"+about_path+"'" %></li>
       <li><%= link_to "Contact", "javascript:this.location = '"+contact_path+"'" %></li>
       <% if signed_in? %>
-      <li><span><%= link_to current_user.email, edit_user_path(current_user) %><%= link_to "Logout", "javascript:this.location = '"+signout_path+"'", :method => :delete %></span></li>
+      <li><span><%= link_to (current_user.screen_name+" ("+current_user.userpoints.all[0].points.to_s+" points) rating: "+current_user.score().to_s+" %"), edit_user_path(current_user) %><%= link_to "Logout", "javascript:this.location = '"+signout_path+"'", :method => :delete %></span></li>
       <% else %>
       <li><span><%= link_to "Login", "javascript:this.location = '"+signin_path+"'" %></span></li>
       <% end %>

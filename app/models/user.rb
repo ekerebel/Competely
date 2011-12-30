@@ -1,11 +1,15 @@
 require 'digest'
 class User < ActiveRecord::Base
 	attr_accessor :password
-	attr_accessible :first_name, :last_name, :middle_name, :email, :password, :password_confirmation
+	attr_accessible :first_name, :last_name, :middle_name, :email, :password, :password_confirmation, :screen_name
     has_many :products, :dependent => :destroy
+	has_many :productpurchases, :dependent => :destroy
+	has_many :userpoints, :dependent => :destroy
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  	validates :first_name,  :presence => true,
+  	validates :screen_name,  :presence => true,
+                    :length   => { :maximum => 50 }
+ 	validates :first_name,  :presence => true,
                     :length   => { :maximum => 50 }
  	validates :last_name,  :presence => true,
                     :length   => { :maximum => 50 }
@@ -14,7 +18,8 @@ class User < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
     validates :password, :presence     => true,
                        :confirmation => true,
-                       :length       => { :within => 6..40 }
+                       :length       => { :within => 6..40 },
+                       :on => :create
 	before_save :encrypt_password
 
 	def has_password?(submitted_password)
@@ -27,9 +32,18 @@ class User < ActiveRecord::Base
     	return user if user.has_password?(submitted_password)
  	end
 
+	def score
+		97.4
+	end
+	
+	after_save :create_userpoints
+
   private
 
-
+	def create_userpoints
+		userpoint = Userpoint.create(:user_id => self.id, :points => 200)
+		userpoint.save
+	end
 
     def encrypt_password
       self.salt = make_salt unless has_password?(password)
@@ -43,6 +57,8 @@ class User < ActiveRecord::Base
     def make_salt
       secure_hash("#{Time.now.utc}--#{password}")
     end
+
+	
 
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)

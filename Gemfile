@@ -14,6 +14,7 @@ gem 'acts_as_indexed'
 gem 'will_paginate', '3.0.pre2'
 gem "fancybox-rails"
 #gem "facebox-rails", "~> 0.1.1"
+gem 'forgery'
 
 
 # Gems used only for assets and not required
@@ -48,6 +49,7 @@ group :test do
   gem 'will_paginate', '3.0.pre2'
   gem "fancybox-rails"
   #gem "facebox-rails", "~> 0.1.1"
+  gem 'forgery'
 end
 
 group :production do
@@ -58,4 +60,5 @@ group :production do
   gem 'will_paginate', '3.0.pre2'
   gem "fancybox-rails"
   #gem "facebox-rails", "~> 0.1.1"
+  gem 'forgery'
 end

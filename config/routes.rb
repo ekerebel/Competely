@@ -10,9 +10,11 @@ Competely::Application.routes.draw do
 	
   resources :products do
   	resources :prices
+  	resources :productpurchases
   end
   resources :products
   	match 'products/update_category_select/:id', :controller=>'products', :action => 'update_category_select'
+  	match 'products/:id/follow', :controller=>'products', :action => 'follow'
   	
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]

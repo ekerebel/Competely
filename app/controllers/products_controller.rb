@@ -24,10 +24,10 @@ before_filter :authenticate
     	if (params[:search].length>0)
     		@products = Product.with_query(params[:search]).find(:all, :conditions => [exp1]).paginate(:page => params[:page])
     	else
-    		@products = current_user.products.find(:all, :conditions => [exp1]).paginate(:page => params[:page])
+    		@products = Product.find(:all, :conditions => [exp1]).paginate(:page => params[:page])
     	end
     else
-    	@products = current_user.products.find(:all, :conditions => [exp1]).paginate(:page => params[:page])
+    	@products = Product.find(:all, :conditions => [exp1]).paginate(:page => params[:page])
     end
     @title="products"
     respond_to do |format|
@@ -113,9 +113,11 @@ before_filter :authenticate
 	@title="products"
     respond_to do |format|
       if @product.update_attributes(params[:product])
+      	format.js {render :content_type => 'text/javascript'}
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :ok }
       else
+      	format.js {render :content_type => 'text/javascript'}
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -129,7 +131,25 @@ before_filter :authenticate
 		end
 	end
 	
+	def follow
+		@product = Product.find(params[:id])
+    	respond_to do |format|
+    		#format.html { render action: "purchase"}
+      		format.html {render :layout => 'fancyform'}
+      		#format.json { render json: @product }
+    	end
+	end
 	
+	def purchase
+		@product = Product.find(params[:id])
+    	@title="products"
+    	respond_to do |format|
+    		format.js {render :content_type => 'text/javascript'}
+      		#format.html { render action: "new"}
+      		#format.html {render :layout => 'fancyform'}
+      		#format.json { render json: @product }
+    	end
+	end
 
   # DELETE /products/1
   # DELETE /products/1.json
